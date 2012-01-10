@@ -1,0 +1,20 @@
+Le projet, c'est un jeu assez basique.
+
+Un quadrillage.
+Chaque tour, tu peux pop une unité de ton armée (une liste selon ta faction) sur ton bord du plateau. Quand on a plus d'unité dans la liste, on a
+perdu.
+Quand on a plus d'unité sur le plateau, on est forcé d'en pop.
+
+Les unités (outre les variables qui servent au codage) ont des stats
+relativement simples. Ceux sont :
+-PV
+-def
+-atk
+-mvt
+-portée
+
+
+déplacement case par case, tir sans contre attaque. ATK de l'attaquant moins la def du défenseur est simplement déduit aux
+PV du défenseur 
+
+Tout cela est temporaire et brouillon et pourra être modifié.
