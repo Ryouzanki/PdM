@@ -23,7 +23,7 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 		this.ATQ=_ATQ;
 		this.NBA=_NBA;
 		this.portee=_portee;
-		this.label=_label
+		this.label=_label;
 	}
 	
 	// Get
