@@ -14,16 +14,18 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 	private String Label;	// Nom de l'unite... Useless ?
 	private int x, y;	// Coordonnee de l'unite sur le plateau
 	private boolean Joueur;	// Appartient au joueur 1 sinon au joueur 2
+	private boolean Est_la;	// Presence sur le plateau
+	private boolean A_bouge;	// Si l'unite a bouge
 	
 	// Constructeur d'unité
-	public Unite(int _PV, int _MVT, int _DEF, int ATQ, int NBA, int _portee, String _label) {
+	public Unite(int _PV, int _MVT, int _DEF, int _ATQ, int _NBA, int _Portee, String _Label) {
 		this.PV=_PV;
 		this.MVT=_MVT;
 		this.DEF=_DEF;
 		this.ATQ=_ATQ;
 		this.NBA=_NBA;
-		this.portee=_portee;
-		this.label=_label;
+		this.Portee=_Portee;
+		this.Label=_Label;
 	}
 	
 	// Get
@@ -60,6 +62,12 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 	public boolean GetJoueur() {
 		return this.Joueur ;
 	}
+	public boolean GetEst_la() {
+		return this.Est_la ;
+	}
+	public boolean GetA_bouge() {
+		return this.A_bouge ;
+	}
 	
 	// Set
 	public void SetPV(int n) {
@@ -77,13 +85,13 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 	public void SetNBA(int n) {
 		this.NBA=n;
 	}
-	public boolean SetA_joue(boolean n) {
+	public void SetA_joue(boolean n) {
 		this.A_joue=n;
 	}
 	public void Setportee(int n) {
 		this.Portee=n;
 	}
-	public String SetLabel(String n) {
+	public void SetLabel(String n) {
 		this.Label=n;
 	}
 	public void SetX(int n) {
@@ -92,7 +100,38 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 	public void SetY(int n) {
 		this.y=n;
 	}
-	public boolean GetJoueur(boolean n) {
+	public void SetJoueur(boolean n) {
 		this.Joueur=n;
+	}
+	public void SetEst_la(boolean n) {
+		this.Est_la=n;
+	}
+	public void SetA_bouge(boolean n) {
+		this.A_bouge=n;
+	}
+	
+	// Les 'vraies' fonctions
+	
+	// Fonction qui fait attendre une unite que le joueur ne veut pas utiliser
+	public void Attendre() {
+		this.A_joue=false;
+	}
+
+
+	// Fonction d'attaque temporaire pour le moment car chaque unite n'aura
+	// qu'une unique attaque pour le moment
+	public void Attaque(Unite Def) {
+		if (((Math.abs(this.x-Def.x)+Math.abs(this.y-Def.y))<=this.Portee)&&(!this.A_joue)) {
+			this.A_joue=true;
+			for (int i=0; i<this.NBA; i++) {
+				Def.Subit(this.ATQ);
+			}
+		}
+	}
+	
+	// Fonction pour infliger des degats a l'unite qui prend le coup
+	public void Subit(int dgt_brut) {
+		int dgt_reel = dgt_brut-this.DEF;
+		this.PV = this.PV-dgt_reel;
 	}
 }

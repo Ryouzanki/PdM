@@ -17,6 +17,18 @@ relativement simples. Ceux sont :
 déplacement case par case, tir sans contre attaque. ATK de l'attaquant moins la def du défenseur est simplement déduit aux
 PV du défenseur 
 
+Pour le moment, j'utilise NBA qui est un multiplicateur pour avoir l'efficacité
+d'une attaque. Par exemple (chiffre arbitraires)un tank a 50pv 20def et un bonhomme a 100pv mais
+0def. Une attaque anti-char sera 60ATQ 1NBA donc 1*(60-20) soit 40 de degat sur
+le tank (80% de sa vie) et ne fera que 60% de dommages sur l'infanterie. Une
+attaque anti-infanterie (Lance flamme, soyons fous) sera 25ATQ 4NBA donc elle
+fera du 4*(25-20) sur le tank soit 20PV soit 40% de la vie du tank (lol) et fera
+du 4*25 contre le soldat qui finit en BBQ.
+Pourquoi se faire chier ? Je pense que c'est mieux que de foutre un "Si c'est
+un tank, dégat x2" Aussi parce que comme ça je peux générer différent niveau
+de blindage.
+
+
 Tout cela est temporaire et brouillon et pourra être modifié.
 
 Le langage Java est utilisé.
