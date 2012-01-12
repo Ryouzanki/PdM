@@ -26,6 +26,8 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 		this.NBA=_NBA;
 		this.Portee=_Portee;
 		this.Label=_Label;
+		this.Est_la=false;
+		this.A_bouge=true;
 	}
 	
 	// Get
@@ -114,7 +116,7 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 	
 	// Fonction qui fait attendre une unite que le joueur ne veut pas utiliser
 	public void Attendre() {
-		this.A_joue=false;
+		this.A_joue=true;
 	}
 
 
@@ -132,6 +134,9 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 	// Fonction pour infliger des degats a l'unite qui prend le coup
 	public void Subit(int dgt_brut) {
 		int dgt_reel = dgt_brut-this.DEF;
+		if(dgt_reel<0) {
+			dgt_reel=0;
+		}
 		this.PV = this.PV-dgt_reel;
 	}
 }
