@@ -9,7 +9,7 @@ public class Plateau {
 	private Unite[][] carreaux;	// Matrice des cases du tableau et leur contenu (occupe ou pas)
 	private Unite[] armee1;		// Unites composant l'armee 1 pas encore sur le terrain avec un nombre max par défaut temporaire
 	private Unite[] armee2;		// Unites composant l'armee 1 pas encore sur le terrain avec un nombre max par défaut temporaire
-	private int nb1=0, nb2=0; // Nombre d'unite dans l'armee 1 et 2
+	public int nb1=0, nb2=0; // Nombre d'unite dans l'armee 1 et 2 deja envoyee
 	
 
 	public Plateau(int _haut, int _large) {
@@ -28,6 +28,33 @@ public class Plateau {
 		}
 	}
 
+	// Choix des armees
+	public void choix_armee(int n, boolean b) {
+		if (b) {
+			armee2 = Faction.choix_faction(n);
+		}
+		else {
+			armee1 = Faction.choix_faction(n);
+		}
+	}
+		
+		
+
+	// Actualise le tableau (efface les cadavres)
+	public void crocmort() {
+		for(int i=0; i<large; i++) {
+			for(int j=0; j<haut; j++) {
+				// debogage 
+				// System.out.println("check case ["+i+","+j+"]");
+				if ((carreaux[i][j]!=null)&&(carreaux[i][j].GetPV()<1)) {
+					System.out.println(carreaux[i][j].GetLabel()+" a été détruit.");
+					carreaux[i][j]=null;
+				}
+			}
+		}
+	}
+
+/*
 	// Sert a initialiser les armees
 	public void Ajouter(Unite U, boolean b) { // Boolean foireux pour déterminer l'armee 1 ou 2) 
 		if (b) {
@@ -39,7 +66,7 @@ public class Plateau {
 			nb2++;
 		}
 	}
-
+*/
 
 	// Fonction qui déplace une unite selon de nouvelle coordonnee si c'est a
 	// portee de MVT et que la case n'est pas occupee. pas de gestion de
@@ -71,9 +98,11 @@ public class Plateau {
 	// Obtenir une unite d'une armee
 	public Unite Obtenir(int i, boolean b) { // Encore une boolean foireuse pour déterminer de quelle armee
 		if(b) {
+			nb1++;
 			return armee1[i];
 		}
 		else {
+			nb2++;
 			return armee2[i];
 		}
 	}

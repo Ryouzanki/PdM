@@ -28,6 +28,10 @@ Pourquoi se faire chier ? Je pense que c'est mieux que de foutre un "Si c'est
 un tank, dégat x2" Aussi parce que comme ça je peux générer différent niveau
 de blindage.
 
+Pour le moment il a été décidé pour simplifer qu'on ne gérera pas les collisions.
+Donc les unités se "téléportent" et les tirs passent à travers les unités non
+ciblées. Plus tard, on pourra ajouter la contrainte du champ de tir gêné par les
+alliés de dos et/ou celle des ennemis qui protègent l'arrière garde.
 
 Tout cela est temporaire et brouillon et pourra être modifié.
 
