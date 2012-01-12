@@ -53,6 +53,7 @@ public class Plateau {
 			U.SetX(x);
 			U.SetY(y);
 		}
+		else {System.out.println(U.GetLabel()+ "BOUGE PAS WTF");} // Debogage
 	}
 
 	// Fonction pour déplacer une unite d'une armee sur le plateau
@@ -77,4 +78,14 @@ public class Plateau {
 		}
 	}
 
+	public int getHaut() {
+		return this.haut;
+	}
+	public int getLarge() {
+		return this.large;
+	}
+
+	public Unite occupant(int x, int y) {
+		return this.carreaux[x][y];
+	}
 }

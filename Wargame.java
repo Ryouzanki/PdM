@@ -9,6 +9,19 @@ public class Wargame {
 	// temp affichage pour debugging
 	public void afficher() {
 		System.out.println();
+		for(int i=0; i<this.plateau.getHaut(); i++) {
+			System.out.println();
+			for(int j=0; j<this.plateau.getLarge(); j++) {
+				if (this.plateau.occupant(i,j)==null) {
+					System.out.print(" - ");
+				}
+				else { 
+					System.out.print(" + ");
+				}
+			}
+			System.out.println();
+		}
+	}
 
 
 
@@ -22,6 +35,9 @@ public class Wargame {
 		test.plateau.Envoyer(test.plateau.Obtenir(0,true),2,2);
 		System.out.println(test);
 		System.out.println(test.plateau);
+		test.afficher();
+		test.plateau.occupant(2,2).SetA_bouge(false);
+		test.plateau.Deplacer(test.plateau.occupant(2,2),1,1);
 		test.afficher();
 
 	}
