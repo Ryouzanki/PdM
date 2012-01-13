@@ -47,7 +47,7 @@ public class Plateau {
 				// debogage 
 				// System.out.println("check case ["+i+","+j+"]");
 				if ((carreaux[i][j]!=null)&&(carreaux[i][j].GetPV()<1)) {
-					System.out.println(carreaux[i][j].GetLabel()+" a été détruit.");
+					System.out.println(carreaux[i][j].GetLabel()+"a été détruit.");
 					carreaux[i][j]=null;
 				}
 			}
