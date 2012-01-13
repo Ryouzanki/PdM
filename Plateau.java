@@ -5,12 +5,12 @@
  */
 
 public class Plateau {
+
 	private int haut, large;	// Dimensions du plateau
 	private Unite[][] carreaux;	// Matrice des cases du tableau et leur contenu (occupe ou pas)
 	private Unite[] armee1;		// Unites composant l'armee 1 pas encore sur le terrain avec un nombre max par défaut temporaire
 	private Unite[] armee2;		// Unites composant l'armee 1 pas encore sur le terrain avec un nombre max par défaut temporaire
 	public int nb1=0, nb2=0; // Nombre d'unite dans l'armee 1 et 2 deja envoyee
-	
 
 	public Plateau(int _haut, int _large) {
 		this.haut = _haut;

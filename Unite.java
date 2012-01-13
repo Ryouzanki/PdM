@@ -4,6 +4,7 @@
  */
 
 public class Unite{	// Classe gerant les differentes unites du jeu
+
 	private int PV;		// Point de vie de l'unite qui est supprimee quand PV<1
 	private int MVT;	// Nombre de case que l'unite peut parcourir
 	private int DEF;	// Point que l'on retire a l'attaque subie
@@ -19,15 +20,15 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 	
 	// Constructeur d'unité
 	public Unite(int _PV, int _MVT, int _DEF, int _ATQ, int _NBA, int _Portee, String _Label) {
-		this.PV=_PV;
-		this.MVT=_MVT;
-		this.DEF=_DEF;
-		this.ATQ=_ATQ;
-		this.NBA=_NBA;
-		this.Portee=_Portee;
-		this.Label=_Label;
-		this.Est_la=false;
-		this.A_bouge=true;
+		this.PV = _PV;
+		this.MVT = _MVT;
+		this.DEF = _DEF;
+		this.ATQ = _ATQ;
+		this.NBA = _NBA;
+		this.Portee = _Portee;
+		this.Label = _Label;
+		this.Est_la = false;
+		this.A_bouge = true;
 	}
 	
 	// Get
@@ -123,8 +124,8 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 	// Fonction d'attaque temporaire pour le moment car chaque unite n'aura
 	// qu'une unique attaque pour le moment
 	public void Attaque(Unite Def) {
-		if (((Math.abs(this.x-Def.x)+Math.abs(this.y-Def.y))<=this.Portee)&&(!this.A_joue)) {
-			this.A_joue=true;
+		if (((Math.abs(this.x-Def.x)+Math.abs(this.y-Def.y))<=this.Portee)&&(!this.A_joue)) { // XXX distance()
+			this.A_joue = true;
 			for (int i=0; i<this.NBA; i++) {
 				Def.Subit(this.ATQ);
 			}
@@ -134,7 +135,7 @@ public class Unite{	// Classe gerant les differentes unites du jeu
 	// Fonction pour infliger des degats a l'unite qui prend le coup
 	public void Subit(int dgt_brut) {
 		int dgt_reel = dgt_brut-this.DEF;
-		if(dgt_reel<0) {
+		if (dgt_reel < 0) {
 			dgt_reel=0;
 		}
 		this.PV = this.PV-dgt_reel;

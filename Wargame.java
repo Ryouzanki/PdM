@@ -10,7 +10,7 @@ public class Wargame {
 	}
 
 	// temp affichage pour debugging
-	public void afficher() {
+	public void afficher() { // XXX dans plateau
 		System.out.println();
 		for(int i=0; i<this.plateau.getHaut(); i++) {
 			System.out.println();
