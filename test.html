@@ -1,0 +1,638 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Holy Britannian Empire</title>
+<style type="text/css">
+    li { list-style: none;  margin: 0; }
+    p { margin: 0; }
+    span.foldopened { color: white; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: visible;
+    cursor:pointer; }
+
+
+    span.foldclosed { color: #666666; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: hidden;
+    cursor:pointer; }
+
+    span.foldspecial { color: #666666; font-size: xx-small; border-style: none solid solid none;
+    border-color: #CCCCCC; border-width: 1; font-family: sans-serif; padding: 0em 0.1em 0em 0.1em; background: #e0e0e0;
+    cursor:pointer; }
+
+    span.l { color: red; font-weight: bold; }
+
+    a.mapnode:link {text-decoration: none; color: black; }
+    a.mapnode:visited {text-decoration: none; color: black; }
+    a.mapnode:active {text-decoration: none; color: black; }
+    a.mapnode:hover {text-decoration: none; color: black; background: #eeeee0; }
+
+</style>
+<!-- ^ Position is not set to relative / absolute here because of Mozilla -->
+</head>
+<body>
+
+<script type="text/javascript">
+   // Here we implement folding. It works fine with MSIE5.5, MSIE6.0 and
+   // Mozilla 0.9.6.
+
+   if (document.layers) {
+      //Netscape 4 specific code
+      pre = 'document.';
+      post = ''; }
+   if (document.getElementById) {
+      //Netscape 6 specific code
+      pre = 'document.getElementById("';
+      post = '").style'; }
+   if (document.all) {
+      //IE4+ specific code
+      pre = 'document.all.';
+      post = '.style'; }
+
+function layer_exists(layer) {
+   try {
+      eval(pre + layer + post);
+      return true; }
+   catch (error) {
+      return false; }}
+
+function show_layer(layer) {
+   eval(pre + layer + post).position = 'relative'; 
+   eval(pre + layer + post).visibility = 'visible'; }
+
+function hide_layer(layer) {
+   eval(pre + layer + post).visibility = 'hidden';
+   eval(pre + layer + post).position = 'absolute'; }
+
+function hide_folder(folder) {
+    hide_folding_layer(folder)
+    show_layer('show'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function show_folder(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_layer('show'+folder+'_'+i); }
+}
+function show_folder_completely(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+
+
+function hide_folding_layer(folder) {
+   var i;
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folding_layer(folder+'_'+i); }
+
+   hide_layer('hide'+folder);
+   hide_layer('show'+folder);
+   hide_layer('fold'+folder);
+
+   scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function fold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folder(folder+'_'+i); }
+}
+
+function unfold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+</script>
+<SPAN class="foldspecial" onclick="fold_document()">All +</SPAN>
+<SPAN class="foldspecial" onclick="unfold_document()">All -</SPAN>
+<p>Holy Britannian Empire
+<ul><li><span id="show1_1" class="foldclosed" onClick="show_folder('1_1')" style="POSITION: absolute">+</span> <span id="hide1_1" class="foldopened" onClick="hide_folder('1_1')">-</span>
+Gouvernement
+<ul id="fold1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_1" class="foldclosed" onClick="show_folder('1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_1_1" class="foldopened" onClick="hide_folder('1_1_1')">-</span>
+Personnels &nbsp;politiques
+<ul id="fold1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_1_1" class="foldclosed" onClick="show_folder('1_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_1_1_1" class="foldopened" onClick="hide_folder('1_1_1_1')">-</span>
+Triumvirat (2/3)
+<ul id="fold1_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_1_1_1" class="foldclosed" onClick="show_folder('1_1_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_1_1_1_1" class="foldopened" onClick="hide_folder('1_1_1_1_1')">-</span>
+(Empereur) Ryouzanki Zeldar
+<ul id="fold1_1_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_1_1_2" class="foldclosed" onClick="show_folder('1_1_1_1_2')" style="POSITION: absolute">+</span> <span id="hide1_1_1_1_2" class="foldopened" onClick="hide_folder('1_1_1_1_2')">-</span>
+(Imperatrice) Ayanami Rei
+<ul id="fold1_1_1_1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_1_1_2_1" class="foldclosed" onClick="show_folder('1_1_1_1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_1_1_1_2_1" class="foldopened" onClick="hide_folder('1_1_1_1_2_1')">-</span>
+Description
+<ul id="fold1_1_1_1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li><p>Ayanami Rei, surnomm&#233;e "L'imp&#233;ratrice sacr&#233;e", est bien entendu l'&#233;pouse de l'empereur Zeldar Ryouzanki. Son age est inconnu et l'on raconte qu'elle change de corps et est donc insensible aux d&#233;g&#226;ts du temps. Froide et distante en g&#233;n&#233;ral, son caract&#232;re s'inverse en pr&#233;sence de son &#233;poux, ou d'autre personnalit&#233;s importantes de l'empire, en particulier, les chevaliers sup&#233;rieurs de l'as de c&#339;ur et de l'as de carreau ; Alice et Aono. S&#233;raphe de haut rang, elle fr&#233;quentait &#233;norm&#233;ment Aono et Youmu.Connaissance de longue date de l'empereur, elle &#233;tait autrefois la directrice du corps diplomatique de l'empire et a conserv&#233; sa notori&#233;t&#233; et sa gracieuse et &#233;l&#233;gante prestance. Elle s'occupe donc des affaires civiles et des relations diplomatiques ext&#233;rieures et continue de commander personnellement le corps diplomatique imp&#233;riale. Elle ne monte en combat qu'en cas de force majeure, ce que l'empereur &#233;vite a tout prix. Elle poss&#232;de des pouvoirs de glace et est le pilote du "Nirvash". Toutefois, lorsqu'elle se d&#233;place avec l'empereur, ils montent a bord du Gawain IFXV-301. En tant que strat&#232;ge, elle est toujours droite et n'use jamais de strat&#233;gie telle que le sabotage ou la prise d'otage et attaque donc g&#233;n&#233;ralement de front ce qui en fait une m&#233;diocre tacticienne. Sur le champ de bataille, l&#8217;empereur, qu&#8217;elle suit tr&#232;s souvent dans ses d&#233;placements pour voir du paysage, lui assigne le commandement de l'&#233;tat major tandis qu&#8217;il assume la responsabilit&#233; de l&#8217;offensive Elle poss&#232;de officiellement une garde personnelle f&#233;minis&#233;e nomm&#233; les &#171;&#160;Valkyries&#160;&#187; mais officieusement, c&#8217;est l&#8217;empereur qui commande ce corps d'&#233;lite de l&#8217;inquisition et s&#8217;en sert pour garder un &#339;il sur l'imp&#233;ratrice et les agissements de son entourage. Il leur donne notamment les secrets droits de toucher l'imp&#233;ratrice et de lui faire perdre connaissance par s&#233;datif pour la mettre en s&#233;curit&#233; contre son gr&#232;s, m&#234;me si cela n&#8217;est encore jamais arriv&#233;. Seules les Valkyries sup&#233;rieures poss&#232;dent des injecteurs sur elles. Si l'imp&#233;ratrice venait a outrepasser, les valkyries, tenues pour responsables seraient ex&#233;cut&#233;es sans sommation. Rei appr&#233;cie les choses simple comme passer du temps avec son &#233;poux et ses amies (en l'occurrence&#160;: &nbsp;la grande inquisitrice, la lionne imp&#233;riale et la m&#232;re sup&#233;rieure) Elle aime &#233;norm&#233;ment les paysages ce qui la pousse a beaucoup voyager en d&#233;pit de l'empereur. Elle n'aime pas &#234;tre mise &#224;&nbsp;l'&#233;cart et ex&#232;cre les gens qui parlent trop.
+<br>
+
+<br>
+PUG&#160;: Valkyries
+<br>
+
+<br>
+Flotte&#160;: Walhalla
+<br>
+
+<br>
+Secteur&#160;: Secteur Religieux Luminoth
+<br>
+
+<br>
+Plan&#232;te&#160;: Accr&#233;tia
+<br>
+
+<br>
+Pouvoirs&#160;: Glace
+<br>
+
+<br>
+Geass&#160;: The knowledge
+<br>
+
+<br>
+Strat&#232;ge rang: B
+<br>
+
+<br>
+Pilote rang : A
+<br>
+
+<br>
+Combattante rang : B
+<br>
+
+<br>
+Magicien rang&#160;: S
+</li>
+</ul>
+</li>
+<li><span id="show1_1_1_1_2_2" class="foldclosed" onClick="show_folder('1_1_1_1_2_2')" style="POSITION: absolute">+</span> <span id="hide1_1_1_1_2_2" class="foldopened" onClick="hide_folder('1_1_1_1_2_2')">-</span>
+Image
+<ul id="fold1_1_1_1_2_2" style="POSITION: relative; VISIBILITY: visible;"><li>     <p>       <img src="../Im017.JPG">            </p>   
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+<li>(???) "R.R."
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_1_2" class="foldclosed" onClick="show_folder('1_1_1_2')" style="POSITION: absolute">+</span> <span id="hide1_1_1_2" class="foldopened" onClick="hide_folder('1_1_1_2')">-</span>
+Chevaliers sup&#233;rieurs de la volont&#233; imp&#233;riale
+<ul id="fold1_1_1_2" style="POSITION: relative; VISIBILITY: visible;"><li>(Chevalier infernal noir) "Raven"
+
+</li>
+<li>(Chevalier celeste blanc) Elusia Hrist
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_1_3" class="foldclosed" onClick="show_folder('1_1_1_3')" style="POSITION: absolute">+</span> <span id="hide1_1_1_3" class="foldopened" onClick="hide_folder('1_1_1_3')">-</span>
+Chevaliers sup&#233;rieurs des 4 as
+<ul id="fold1_1_1_3" style="POSITION: relative; VISIBILITY: visible;"><li>(Chevalier sup. de l'as de Carreau) Morimiya Aono
+
+</li>
+<li>(Chevalier sup. de l'as de Coeur) Drezal Alice
+
+</li>
+<li>(Chevalier sup. de l'as de Tr&#232;fle) Nagisa Kaworu
+
+</li>
+<li>(Chevalier sup. de l'as de Pique) "Zero"
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_2" class="foldclosed" onClick="show_folder('1_1_2')" style="POSITION: absolute">+</span> <span id="hide1_1_2" class="foldopened" onClick="hide_folder('1_1_2')">-</span>
+Personnels religieux
+<ul id="fold1_1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_2_1" class="foldclosed" onClick="show_folder('1_1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_1_2_1" class="foldopened" onClick="hide_folder('1_1_2_1')">-</span>
+Eglise
+<ul id="fold1_1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li>(Erudit imp&#233;rial) Valeth Lezard
+
+</li>
+<li>(Machiniste supr&#234;me) Law Vincent
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_2_2" class="foldclosed" onClick="show_folder('1_1_2_2')" style="POSITION: absolute">+</span> <span id="hide1_1_2_2" class="foldopened" onClick="hide_folder('1_1_2_2')">-</span>
+Inquisition
+<ul id="fold1_1_2_2" style="POSITION: relative; VISIBILITY: visible;"><li>(Inquisitrice en chef) "C.C."
+
+</li>
+<li>(Chef du corps executionnaire) Kishimoto Hayase
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_2_3" class="foldclosed" onClick="show_folder('1_1_2_3')" style="POSITION: absolute">+</span> <span id="hide1_1_2_3" class="foldopened" onClick="hide_folder('1_1_2_3')">-</span>
+Assassins
+<ul id="fold1_1_2_3" style="POSITION: relative; VISIBILITY: visible;"><li>(Silence) Chane Laforet
+
+</li>
+<li>(Fantome) Vino Stadfeld
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_3" class="foldclosed" onClick="show_folder('1_1_3')" style="POSITION: absolute">+</span> <span id="hide1_1_3" class="foldopened" onClick="hide_folder('1_1_3')">-</span>
+Personnels Militaires
+<ul id="fold1_1_3" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_1_3_1" class="foldclosed" onClick="show_folder('1_1_3_1')" style="POSITION: absolute">+</span> <span id="hide1_1_3_1" class="foldopened" onClick="hide_folder('1_1_3_1')">-</span>
+Gestion des lois martiales
+<ul id="fold1_1_3_1" style="POSITION: relative; VISIBILITY: visible;"><li>(Presidente de la chambre des 46) Horaki Hikari
+
+</li>
+<li>(Chevalier blanc supr&#234;me) Suzuhara T&#244;ji
+
+</li>
+<li>(Lois martiales) Aida Kensuke
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_1_3_2" class="foldclosed" onClick="show_folder('1_1_3_2')" style="POSITION: absolute">+</span> <span id="hide1_1_3_2" class="foldopened" onClick="hide_folder('1_1_3_2')">-</span>
+<span style="font-size: 108%;font-family: SansSerif, sans-serif; ">Etat-Major</span>
+<ul id="fold1_1_3_2" style="POSITION: relative; VISIBILITY: visible;"><li>(Chef d'&#233;tat-major) "Dark Saber"
+
+</li>
+<li>(Genie logistique) Nagato Yuki
+
+</li>
+<li>(Bureau de l'intelligence) "Rollo" 
+
+</li>
+<li>(Chef des chevaliers noirs) Sohryu-Langley Asuka
+
+</li>
+<li>(Guilde des strat&#232;ges) "G&#233;n&#233;ral Carter"
+
+</li>
+<li>(Chef de l'arm&#233;e imp&#233;riale) Kazuki Fuse
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2" class="foldclosed" onClick="show_folder('1_2')" style="POSITION: absolute">+</span> <span id="hide1_2" class="foldopened" onClick="hide_folder('1_2')">-</span>
+Institutions
+<ul id="fold1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_2_1" class="foldclosed" onClick="show_folder('1_2_1')" style="POSITION: absolute">+</span> <span id="hide1_2_1" class="foldopened" onClick="hide_folder('1_2_1')">-</span>
+Justice
+<ul id="fold1_2_1" style="POSITION: relative; VISIBILITY: visible;"><li>Chambre des 46
+
+</li>
+<li>L'Ordre des Chevaliers Blancs
+
+</li>
+<li>Police
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2_2" class="foldclosed" onClick="show_folder('1_2_2')" style="POSITION: absolute">+</span> <span id="hide1_2_2" class="foldopened" onClick="hide_folder('1_2_2')">-</span>
+Militaire
+<ul id="fold1_2_2" style="POSITION: relative; VISIBILITY: visible;"><li>Bureau de l'intelligence
+
+</li>
+<li>Conseil de s&#233;curit&#233;
+
+</li>
+<li>L'Ordre des Chevaliers Noirs
+
+</li>
+<li>Guilde des strat&#232;ges
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2_3" class="foldclosed" onClick="show_folder('1_2_3')" style="POSITION: absolute">+</span> <span id="hide1_2_3" class="foldopened" onClick="hide_folder('1_2_3')">-</span>
+Administration civile
+<ul id="fold1_2_3" style="POSITION: relative; VISIBILITY: visible;"><li>Avatars de l'empereur
+
+</li>
+<li>Missi Dominici
+
+</li>
+<li>Gouverneurs
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3" class="foldclosed" onClick="show_folder('1_3')" style="POSITION: absolute">+</span> <span id="hide1_3" class="foldopened" onClick="hide_folder('1_3')">-</span>
+Arm&#233;e de Britannia
+<ul id="fold1_3" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_1" class="foldclosed" onClick="show_folder('1_3_1')" style="POSITION: absolute">+</span> <span id="hide1_3_1" class="foldopened" onClick="hide_folder('1_3_1')">-</span>
+Arm&#233;e religieuse
+<ul id="fold1_3_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_1_1" class="foldclosed" onClick="show_folder('1_3_1_1')" style="POSITION: absolute">+</span> <span id="hide1_3_1_1" class="foldopened" onClick="hide_folder('1_3_1_1')">-</span>
+La Garde Blanche
+<ul id="fold1_3_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>La Garde Celeste
+
+</li>
+<li>Valkyries
+
+</li>
+<li>Gardes blancs
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_1_2" class="foldclosed" onClick="show_folder('1_3_1_2')" style="POSITION: absolute">+</span> <span id="hide1_3_1_2" class="foldopened" onClick="hide_folder('1_3_1_2')">-</span>
+L'Inquisition
+<ul id="fold1_3_1_2" style="POSITION: relative; VISIBILITY: visible;"><li>Senseurs
+
+</li>
+<li>Crusaders
+
+</li>
+<li>Gladiators
+
+</li>
+<li>Shadows
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_1_3" class="foldclosed" onClick="show_folder('1_3_1_3')" style="POSITION: absolute">+</span> <span id="hide1_3_1_3" class="foldopened" onClick="hide_folder('1_3_1_3')">-</span>
+La Police Militaire
+<ul id="fold1_3_1_3" style="POSITION: relative; VISIBILITY: visible;"><li>Cityshields
+
+</li>
+<li>Police Militaire
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2" class="foldclosed" onClick="show_folder('1_3_2')" style="POSITION: absolute">+</span> <span id="hide1_3_2" class="foldopened" onClick="hide_folder('1_3_2')">-</span>
+Arm&#233;e imp&#233;riale
+<ul id="fold1_3_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_2_1" class="foldclosed" onClick="show_folder('1_3_2_1')" style="POSITION: absolute">+</span> <span id="hide1_3_2_1" class="foldopened" onClick="hide_folder('1_3_2_1')">-</span>
+La Garde Noire
+<ul id="fold1_3_2_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_2_1_1" class="foldclosed" onClick="show_folder('1_3_2_1_1')" style="POSITION: absolute">+</span> <span id="hide1_3_2_1_1" class="foldopened" onClick="hide_folder('1_3_2_1_1')">-</span>
+Chevalier noir
+<ul id="fold1_3_2_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_2_1_1_1" class="foldclosed" onClick="show_folder('1_3_2_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_3_2_1_1_1" class="foldopened" onClick="hide_folder('1_3_2_1_1_1')">-</span>
+Image
+<ul id="fold1_3_2_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>&#xa;    <img src="Kereberos.jpg" >&#xa;  
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li>Dark Knight
+
+</li>
+<li>Kereberos
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2_2" class="foldclosed" onClick="show_folder('1_3_2_2')" style="POSITION: absolute">+</span> <span id="hide1_3_2_2" class="foldopened" onClick="hide_folder('1_3_2_2')">-</span>
+La Volont&#233; Imp&#233;riale
+<ul id="fold1_3_2_2" style="POSITION: relative; VISIBILITY: visible;"><li>Heavy trooper
+
+</li>
+<li>Assault trooper
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2_3" class="foldclosed" onClick="show_folder('1_3_2_3')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3" class="foldopened" onClick="hide_folder('1_3_2_3')">-</span>
+La Garde Imp&#233;riale
+<ul id="fold1_3_2_3" style="POSITION: relative; VISIBILITY: visible;"><li>Soldats Telegonos
+
+</li>
+<li>Soldats Ulysse
+
+</li>
+<li><span id="show1_3_2_3_1" class="foldclosed" onClick="show_folder('1_3_2_3_1')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3_1" class="foldopened" onClick="hide_folder('1_3_2_3_1')">-</span>
+Sentinelles (7/7)
+<ul id="fold1_3_2_3_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_2_3_1_1" class="foldclosed" onClick="show_folder('1_3_2_3_1_1')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3_1_1" class="foldopened" onClick="hide_folder('1_3_2_3_1_1')">-</span>
+images
+<ul id="fold1_3_2_3_1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_3_2_3_1_1_1" class="foldclosed" onClick="show_folder('1_3_2_3_1_1_1')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3_1_1_1" class="foldopened" onClick="hide_folder('1_3_2_3_1_1_1')">-</span>
+Dragonniers
+<ul id="fold1_3_2_3_1_1_1" style="POSITION: relative; VISIBILITY: visible;"><li>&#xa;    <img src="GI/GI7.png" >&#xa;  
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2_3_1_1_2" class="foldclosed" onClick="show_folder('1_3_2_3_1_1_2')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3_1_1_2" class="foldopened" onClick="hide_folder('1_3_2_3_1_1_2')">-</span>
+Combats urbains
+<ul id="fold1_3_2_3_1_1_2" style="POSITION: relative; VISIBILITY: visible;"><li>&#xa;    <img src="GI/GI6.png" >&#xa;  
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2_3_1_1_3" class="foldclosed" onClick="show_folder('1_3_2_3_1_1_3')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3_1_1_3" class="foldopened" onClick="hide_folder('1_3_2_3_1_1_3')">-</span>
+Maritime &amp; spatial
+<ul id="fold1_3_2_3_1_1_3" style="POSITION: relative; VISIBILITY: visible;"><li>&#xa;    <img src="GI/GI5.png" >&#xa;  
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2_3_1_1_4" class="foldclosed" onClick="show_folder('1_3_2_3_1_1_4')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3_1_1_4" class="foldopened" onClick="hide_folder('1_3_2_3_1_1_4')">-</span>
+Garnisons &amp; bases
+<ul id="fold1_3_2_3_1_1_4" style="POSITION: relative; VISIBILITY: visible;"><li>&#xa;    <img src="GI/GI4.png" >&#xa;  
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2_3_1_1_5" class="foldclosed" onClick="show_folder('1_3_2_3_1_1_5')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3_1_1_5" class="foldopened" onClick="hide_folder('1_3_2_3_1_1_5')">-</span>
+Polaires &amp; arctiques
+<ul id="fold1_3_2_3_1_1_5" style="POSITION: relative; VISIBILITY: visible;"><li>&#xa;    <img src="GI/GI3.png.png" >&#xa;  
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2_3_1_1_6" class="foldclosed" onClick="show_folder('1_3_2_3_1_1_6')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3_1_1_6" class="foldopened" onClick="hide_folder('1_3_2_3_1_1_6')">-</span>
+Plaines &amp; montagnes
+<ul id="fold1_3_2_3_1_1_6" style="POSITION: relative; VISIBILITY: visible;"><li>&#xa;    <img src="GI/GI2.png.png" >&#xa;  
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2_3_1_1_7" class="foldclosed" onClick="show_folder('1_3_2_3_1_1_7')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3_1_1_7" class="foldopened" onClick="hide_folder('1_3_2_3_1_1_7')">-</span>
+Jungles &amp; mar&#233;cages
+<ul id="fold1_3_2_3_1_1_7" style="POSITION: relative; VISIBILITY: visible;"><li>&#xa;    <img src="GI/GI1.jpg" >&#xa;  
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_2_3_1_2" class="foldclosed" onClick="show_folder('1_3_2_3_1_2')" style="POSITION: absolute">+</span> <span id="hide1_3_2_3_1_2" class="foldopened" onClick="hide_folder('1_3_2_3_1_2')">-</span>
+Description
+<ul id="fold1_3_2_3_1_2" style="POSITION: relative; VISIBILITY: visible;"><li><p>Soldats de base de l'arm&#233;e imp&#233;riale, ils proviennent des 50% des meilleurs fantassins de l'arm&#233;e r&#233;guli&#232;re que chaque plan&#232;te est tenue de fournir. Ils sont command&#233; par le grand chevalier pourpre ; Shinji Ikari, et leur QG se trouve dans le secteur Bellato. Ils n'ont normalement pas &#224;&nbsp;ob&#233;ir aux gouverneurs locaux. Leurs affectations s'&#233;tendent sur l'empire entier et au del&#224; mis a part les plan&#232;tes de Cora et d'Accretia. Leurs &#233;quipements l&#233;gers leur permettent une mobilit&#233; optimale ; l'armure n'entravant aucune articulation. Ces soldats, arm&#233;s d'un simple fusil, d'une arme de poing et d'un poignard, poss&#232;dent la 3&#232;me meilleure vitesse de d&#233;ploiement des troupes au service de l'empereur. Toutefois, ils sont inadapt&#233;s aux batailles spatiales et servent essentiellement en batailles terrestres ou urbaines pour stabiliser un front, garder une position, occuper une zone en attendant l'arriv&#233; d'un strat&#232;ge imp&#233;rial. Ne b&#233;n&#233;ficiant pas d'explosifs, ils doivent se reposer sur les soldats de choc imp&#233;riaux m&#234;me si toutefois ils sont libre d'investir dans des grenades. Les casques sont &#233;quip&#233;s de FOE ainsi que de d&#233;tecteurs internes de respiration reli&#233; &#224;&nbsp;celui de l'officier en charge. Lorsque le soldat est tu&#233;, le casque envoie le pr&#233;avis de d&#233;c&#232;s &#224;&nbsp;l'officier qui peut ainsi &#233;valuer en temps r&#233;el ses pertes. Quand le soldat est captur&#233; ou bless&#233;, il retire son casque, signe qu'il est inapte au combat. Le casque s'&#233;teint afin de ne pas tomber aux mains de l'ennemi, capable alors d'exploiter le FOE. Sauf en cas de permissions, le soldat n'est pas autoris&#233; &#224;&nbsp;retirer son uniforme et son arme de poing. 15% des meilleurs d'entre eux seront s&#233;lectionn&#233;s pour passer soldats de choc. 
+<br>
+
+<br>
+C&#233;dant facilement a la panique, ces soldats de base de l'arm&#233;e de Britannia doivent leur efficacit&#233; &#224;&nbsp;leur nombre et &#224;&nbsp;leur adresse au tir. Fort heureusement &#233;tant donn&#233; qu'ils tirent &#224;&nbsp;vue...
+<br>
+
+<br>
+"Tirez sur l'ennemi !! Peu importe la distance, y'aura bien un de vous qui le touchera..."
+</li>
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_3_3" class="foldclosed" onClick="show_folder('1_3_3')" style="POSITION: absolute">+</span> <span id="hide1_3_3" class="foldopened" onClick="hide_folder('1_3_3')">-</span>
+Arm&#233;e r&#233;guli&#232;re
+<ul id="fold1_3_3" style="POSITION: relative; VISIBILITY: visible;"><li>La Milice
+
+</li>
+<li>Police locale
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4" class="foldclosed" onClick="show_folder('1_4')" style="POSITION: absolute">+</span> <span id="hide1_4" class="foldopened" onClick="hide_folder('1_4')">-</span>
+Histoire
+<ul id="fold1_4" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_4_1" class="foldclosed" onClick="show_folder('1_4_1')" style="POSITION: absolute">+</span> <span id="hide1_4_1" class="foldopened" onClick="hide_folder('1_4_1')">-</span>
+Chapitre 1 : Naissance d'une &#233;toile
+<ul id="fold1_4_1" style="POSITION: relative; VISIBILITY: visible;"><li>Acte 1 : Le contract
+
+</li>
+<li>Acte 2 : Le jeu des ombres
+
+</li>
+<li>Acte 3 : Obtention de pouvoirs
+
+</li>
+<li>Acte 4 : La rencontre du destin
+
+</li>
+<li>Acte 5 : La trahison
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4_2" class="foldclosed" onClick="show_folder('1_4_2')" style="POSITION: absolute">+</span> <span id="hide1_4_2" class="foldopened" onClick="hide_folder('1_4_2')">-</span>
+Chapitre 2 : L'effondrement de la r&#233;publique
+<ul id="fold1_4_2" style="POSITION: relative; VISIBILITY: visible;"><li>Acte 1 : Passassion de pouvoirs
+
+</li>
+<li>Acte 2 : La mont&#233;e de l'imp&#233;rialisme
+
+</li>
+<li>Acte 3 : La prise du sc&#233;nat
+
+</li>
+<li>Acte 4 : "Parce que le monde ne change pas avec de belles paroles, s&#233;nateur"
+
+</li>
+<li>Acte 5 : Le sacre de l'empereur
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4_3" class="foldclosed" onClick="show_folder('1_4_3')" style="POSITION: absolute">+</span> <span id="hide1_4_3" class="foldopened" onClick="hide_folder('1_4_3')">-</span>
+Chapitre 3 : La croisade fratricide
+<ul id="fold1_4_3" style="POSITION: relative; VISIBILITY: visible;"><li>Acte 1 : &nbsp;Complot
+
+</li>
+<li>Acte 2 : Atterrissage forc&#233;
+
+</li>
+<li>Acte 3 : La guerre que personne ne voulait
+
+</li>
+<li>Acte 4 : Le Raven's Ark
+
+</li>
+<li>Acte 5 : La defaite de la petite &#238;le
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul><SCRIPT type="text/javascript">
+fold_document();
+</SCRIPT>
+</body>
+</html>
